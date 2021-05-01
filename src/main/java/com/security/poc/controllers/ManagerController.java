@@ -17,7 +17,6 @@ public class ManagerController {
 	
 private static final Logger log = LoggerFactory.getLogger(ManagerController.class);
 	
-	
 	@GetMapping(value="details", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> getEmployeeDetails(){
 		log.info("In details endpoint");

@@ -1,6 +1,7 @@
 package com.security.filters;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 public class LogFilter implements Filter {
 	
@@ -22,6 +24,7 @@ public class LogFilter implements Filter {
 			throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest) request;
+		MDC.put("LOGID", UUID.randomUUID().toString());
 		log.info("Received HTTP request for API : {} ",req.getRequestURI());
 		chain.doFilter(request, response);
 	}
